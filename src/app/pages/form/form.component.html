@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="main mt-4">
+        <form [formGroup]="form">
+            <div class="row mx-0 col-12">
+                <div class="col-12">
+                    <h2 class="text-center">Formulario</h2>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nombres</mat-label>
+                            <input matInput formControlName="nombres">
+                            <mat-error>
+                                {{form.get('nombres').hasError('whitespace') ? 'El campo no debe contener un espacio al final' : 'Campo inválido'}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput formControlName="apellidos">
+                            <mat-error>
+                                {{form.get('apellidos').hasError('whitespace') ? 'El campo no debe contener un espacio al final' : 'Campo inválido'}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Fumas</mat-label>
+                            <mat-select formControlName="fumas">
+                                <mat-option *ngFor="let s of trueFalse" [value]="s.value">{{s.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Actualmente practicas lectura</mat-label>
+                            <mat-select formControlName="actualmentePracticasLectura">
+                                <mat-option *ngFor="let s of trueFalse" [value]="s.value">{{s.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-12 row mx-0" *ngIf="form.get('librosLeidosUltimosTresMeses').enabled">
+                    <div class="col-auto">
+                        <h3>Libros leídos en los últimos 3 meses</h3>
+                    </div>
+                    <div class="col-auto"><button mat-raised-button color="accent" (click)="addBook()">Agregar</button>
+                    </div>
+
+                    <p class="text-danger col-12" *ngIf="form.get('librosLeidosUltimosTresMeses')?.length <= 0">No has agregado libros</p>
+                    <mat-list role="list" formArrayName="librosLeidosUltimosTresMeses"
+                        *ngIf="form.get('librosLeidosUltimosTresMeses')['controls'].length > 0">
+                        <mat-list-item class="w-100 mb-2"
+                            *ngFor="let item of form.get('librosLeidosUltimosTresMeses')['controls']; index as i"
+                            [formGroupName]="i">
+                            <mat-form-field>
+                                <input matInput formControlName="book" [placeholder]="'Libro'+(i+1)">
+                            </mat-form-field>
+                            <button mat-button color="warn" (click)="deleteBook(i)">Eliminar</button>
+                        </mat-list-item>
+                    </mat-list>
+
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Estado civil</mat-label>
+                            <mat-select formControlName="estadoCivil">
+                                <mat-option *ngFor="let s of civilStatus" [value]="s.id">{{s.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button class="w-100" color="primary" mat-raised-button (click)="send()">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

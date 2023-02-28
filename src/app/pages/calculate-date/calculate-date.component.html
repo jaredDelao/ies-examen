@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row col-12 mx-0 mt-4 align-items-baseline">
+        <h2 class="col-12 text-center">Calcular fecha</h2>
+        <div class="form-group mt-3 col-md-6 col-sm-12 col-lg-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Seleccionar fecha</mat-label>
+                <input matInput [matDatepicker]="dp" disabled [formControl]="dateValue">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp disabled="false"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="form-group col-md-6 col-sm-12 col-lg-4">
+            <mat-form-field appearance="fill">
+                <mat-label>Selecciona una opción</mat-label>
+                <mat-select [formControl]="optionValue">
+                    <mat-option *ngFor="let item of options" [value]="item.id">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-group col-md-6 col-sm-12 col-lg-4">
+            <mat-form-field appearance="fill">
+                <input matInput type="text" numbersOnly placeholder="Cantidad" [formControl]="quantityValue">
+            </mat-form-field>
+        </div>
+        <div class="form-group col-md-6 col-sm-12 col-lg-4">
+            <mat-form-field>
+                <mat-label>El resultado fue</mat-label>
+                <input readonly matInput type="text" numbersOnly [value]="finalDate | date: 'dd MMM yyyy'">
+            </mat-form-field>
+        </div>
+    </div>
+</div>

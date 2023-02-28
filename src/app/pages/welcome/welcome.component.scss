@@ -1,0 +1,38 @@
+.content {
+  height: calc(100vh - 63px);
+  position: relative;
+  width: 100%;
+  background-image: url("../../../assets/images/background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__main {
+    backdrop-filter: blur(14px);
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    h1 {
+      font-size: 4em;
+      line-height: 1em;
+    }
+    p {
+      font-size: 1.5em;
+    }
+  }
+
+  button {
+    border: 2px solid white;
+    background: transparent;
+    text-transform: uppercase;
+    border-radius: 50px;
+    &:hover {
+      background-color: white;
+      color: black !important;
+    }
+  }
+}

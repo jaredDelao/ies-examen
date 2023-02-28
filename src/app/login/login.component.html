@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <form class="form-container m-auto" [formGroup]="form" autocomplete="off">
+        <h1 class="text-center font-weight-bold">Login</h1>
+
+        <p class="text-danger font-weight-bold" *ngIf="isErrorLogin">* Credenciales incorrectas</p>
+
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>User</mat-label>
+                <input formControlName="username" matInput type="text">
+                <mat-error>Campo incorrecto</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" matInput type="password">
+                <mat-error>Campo incorrecto</mat-error>
+            </mat-form-field>
+        </div>
+
+        <button mat-raised-button class="w-100 mt-2" color="primary" (click)="login()" [disabled]="form.invalid">Iniciar
+            sesión
+        </button>
+    </form>
+</div>

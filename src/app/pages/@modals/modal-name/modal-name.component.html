@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="name">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="pt-0">
+    <button class="w-100" mat-raised-button color="primary" [mat-dialog-close]="name" cdkFocusInitial
+        [disabled]="name.length === 0">Aceptar</button>
+</div>

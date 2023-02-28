@@ -1,0 +1,8 @@
+<div class="content">
+    <div class="content__main text-center py-4">
+        <h1 class="text-white font-weight-bold mb-4">Bienvenido a mi <span class="text-warning">Portal</span></h1>
+        <p class="mb-4 text-white">Nos podrías indicar tu nombre</p>
+        <p class="mb-4 text-white" *ngIf="name?.length > 0">{{'El nombre ingresado es: ' + (name | cambioLetras)}}</p>
+        <button class="text-white py-2 px-4" (click)="openDialog()">Escribe tu nombre</button>
+    </div>
+</div>
